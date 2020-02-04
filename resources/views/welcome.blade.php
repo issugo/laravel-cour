@@ -40,6 +40,12 @@
                 top: 18px;
             }
 
+            .top-left{
+                position: absolute;
+                left: 10px;
+                top: 18px;
+            }
+
             .content {
                 text-align: center;
             }
@@ -65,6 +71,12 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            @auth
+                <div class="top-left links">
+                    <a href="{{url('skills')}}">Competences</a>
+                    <a href="{{url('userSkills')}}">Mes competences</a>
+                </div>
+            @endauth
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,7 +93,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    framework
                 </div>
 
                 <div class="links">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNiveauTable extends Migration
+class CreateRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateNiveauTable extends Migration
      */
     public function up()
     {
-        Schema::create('niveau', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
+            //$table->bigIncrements('id');
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->unsignedBigInteger('skill_id');
-            $table->foreign('skill_id')
-                ->references('id')
-                ->on('skills')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->primary(['skill_id', 'user_id']);
-            $table->integer('niveau');
+            $table->primary(['role_id', 'user_id']);
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateNiveauTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niveau');
+        Schema::dropIfExists('role_user');
     }
 }

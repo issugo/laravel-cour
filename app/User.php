@@ -38,6 +38,21 @@ class User extends Authenticatable
     ];
 
     public function skills() {
-        return $this->belongsToMany('App/Skill')->withPivot('niveau');
+        return $this->belongsToMany('App\Skill')->withPivot('level');
+    }
+
+    public function role() {
+        return $this->belongsToMany('App\Role');
+    }
+
+    /**
+     * Fonction pour savoir si l'utilisateur rentré est un admin
+     *
+     * @param $user
+     * @return bool
+     */
+
+    public static function userRole($user) {
+        return $user->role;
     }
 }
