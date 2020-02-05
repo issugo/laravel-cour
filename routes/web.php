@@ -32,10 +32,13 @@ Route::get('deleteComp/{compName}', 'UserController@deleteComp')->where('compNam
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+//route du crud skills
 Route::resource('skills','SkillController');
+
+//route du crud userSkills
 Route::resource('userSkills', 'UserSkillController')->middleware('auth');
 
-
-
-
-Route::get('addComp', 'UserSkillController@create')->middleware('auth');
+//route du chat
+Route::get('/chat', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');

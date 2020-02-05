@@ -36,10 +36,7 @@
                 <td>{{ $skill->name }}</td>
                 <td>{{ $skill->description }}</td>
                 <td>
-                    <form action="{{ route('userSkills.store',$skill->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                    </form>
+                    <a class="btn btn-info" href="{{ route('userSkills.store',$skill->id) }}">Ajouter</a>
                 </td>
             </tr>
         @endforeach

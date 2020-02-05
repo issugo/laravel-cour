@@ -55,4 +55,14 @@ class User extends Authenticatable
     public static function userRole($user) {
         return $user->role;
     }
+
+    /**
+     * Retourne les messages d'un utilisateur
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
