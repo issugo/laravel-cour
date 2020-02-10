@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <img src="{{asset(Auth::user()->avatar)}}">You are logged in!
                 </div>
             </div>
         </div>
