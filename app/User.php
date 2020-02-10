@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function skills() {
-        return $this->belongsToMany('App\Skill')->withPivot('level');
+        return $this->belongsToMany('App\Skill')->withPivot('level')->orderBy('level', 'desc');
     }
 
     public function role() {

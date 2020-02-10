@@ -38,6 +38,10 @@ Route::resource('skills','SkillController');
 //route du crud userSkills
 Route::resource('userSkills', 'UserSkillController')->middleware('auth');
 
+//route pour afficher les users et filtrage
+Route::get('/filtrage', 'UserSkillController@filtrage');
+Route::post('/filtrage', 'UserSkillController@withFiltrage');
+
 //route du chat
 Route::get('/chat', 'ChatsController@index');
 Route::get('messages', 'ChatsController@fetchMessages');

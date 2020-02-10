@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Skill;
-use Illuminate\Support\Facades\DB;
 
 class UserSkillController extends Controller
 {
@@ -99,5 +98,31 @@ class UserSkillController extends Controller
 
         return redirect()->route('userSkills.index')
             ->with('success','Skill deleted successfully');
+    }
+
+    /**
+     * filtrage est faite pour montre les users, leur competence et les filtre
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function filtrage() {
+        return view('filtrage', ['users' => User::all(), 'skills' => Skill::all()]);
+    }
+
+    /**
+     * filtrage est faite pour montre les users, leur competence et les filtre
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function withFiltrage(Request $request) {
+	
+	if($request->PHP-selected = "on" && $request->Python-selected = "on" && $request->HTML5_-_CSS3-selected = "on" && $request->JavaScript-selected = "on") {
+		$users = User::join('skill_user', 'users.id', '=', 'skill_user.id');
+	}
+
+        return $request;
+        return view('filtrage', ['users' => $users, 'skills' => Skill::all()]);
     }
 }
