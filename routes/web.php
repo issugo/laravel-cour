@@ -33,7 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //route du crud skills
-Route::resource('skills','SkillController');
+Route::resource('skills','SkillController')->middleware('admin');
 
 //route du crud userSkills
 Route::resource('userSkills', 'UserSkillController')->middleware('auth');
